@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test Projekt</title>
+    <link rel="stylesheet" href="bootstrap.css" />
+    <style type="text/css">
+    body{
+      margin: 45px;
+      background-color: #58D3F7;
+    }
+    h1{
+      font-family: Ubuntu, sans-serif;
+      color: #FF0;
+      margin: 12px;
+    }
+    </style>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type = "text/javascript">
+    $(document).ready(function(){
+      var table =$("<table>").addClass("table table-striped table-bordered table-hover");
+      var tbody = $("<tbody>");
+      //https://getbootstrap.com/docs/4.1/content/tables/
+      $("body").append(table.append(tbody));
+      
+      $("#eingeben").click(function(){
+        var tr = $("<tr>");
+        
+        var vname = $("#vname").val();
+        var nname = $("#nname").val();
+        var gebdate = $("#gebdate").val();
+        var ort = $("#ort").val();
+        var strasse = $("#strasse").val();
+        var hsnr = $("#hsnr").val()
+        var plz = $("#plz").val();
+        var gebort = $("#gebort").val();
+        var allesOK = true;
+        
+        if(vname==""){
+          alert("Vornamen eingeben!!!!!!!!!!!!!!!!!!!!!!");
+          allesOK = false;
+        } 
+        
+        if (nname=="" && allesOK){
+          alert("Nachnamen eingeben!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (gebdate=="" && allesOK){
+          alert("Geburtsdatum eingeben!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (ort=="" && allesOK) {
+          alert("Wohnort eingeben!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (strasse=="" && allesOK){
+          alert("Strasse eingeben!!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if ((hsnr=="" || hsnr.length >4) && allesOK){
+          alert("Hausnummer eingeben und oder laenge ueberpruefen!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if ((plz=="" || plz.length < 5)  && allesOK){
+          alert("Postleitzahl eingeben und oder auf vollstaendigkeit ueberpruefen!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (gebort=="" && allesOK){
+          alert("Geburtsort eingeben!!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (allesOK){
+          var td_vname = $("<td>").text(vname);
+          var td_nname = $("<td>").text(nname);
+          var td_gebdate = $("<td>").text(gebdate);
+          var td_ort =$("<td>").text(ort);
+          var td_strasse =$("<td>").text(strasse);
+          var td_hsnr =$("<td>").text(hsnr);
+          var td_plz =$("<td>").text(plz);
+          var td_gebort =$("<td>").text(gebort);
+          tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz,td_gebort);
+          tbody.append(tr);
+        }
+      });
+    });
+    </script>
+    </head>
+    <body>
+      <h1> Test </h1>
+      <form>
+        <div class ="form-row">
+          <div class ="form-group col-md-6">
+        <label for ="vname" class="col-form-label">Vorname</label>
+        <input type = "text" class="form-control" id = "vname" name ="vname" placeholder="z.B.: Max">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for ="nname" class=" col-form-label">Nachname</label>
+        <input type = "text" class="form-control" id = "nname" name ="nname" placeholder="z.B.: Mustermann">
+        </div>
+        <div class ="from-group col-md-6">
+        <label for = "gebdate" class="col-form-label">Geburtsdatum</label>
+        <input type = "date" class="form-control" id ="gebdate" placeholder="z.B.: TT/MM/JJJJ">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for ="ort" class="col-form-label">Wohnort</label>
+        <input type = "text" class="form-control" id ="ort" wohnort="ort" placeholder="z.B.: Hamburg">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for = "strasse" class="col-form-label">Strasse</label>
+        <input type = "text" class="form-control" id="strasse" straße="strasse" placeholder="z.B.: Landungsbruecken">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for ="hsnr" class="col-form-label">Hausnummer</label>
+        <input type ="number" class="form-control" id ="hsnr" hausnummer="hsnr" placeholder="z.B.: 12">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for ="plz" class="col-form-label">Postleitzahl</label>
+        <input type ="number" class="form-control" id ="plz" postleitzahl="plz" placeholder="z.B.: 21029">
+        </div>
+        <div class ="form-group col-md-6">
+        <label for ="gebort" class="col-form-label">Geburtsort</label>
+        <input type= "text" class="form-control" id ="gebort" geburtsort ="gebort" placeholder="z.B.: Muenchen">
+        </div>
+        <br>
+        </br>
+        <div class ="form-group col-md-6">
+        <button type = "button" class="btn btn-primary" id="eingeben">Daten Eingeben</button>
+        </div>
+        <br>
+        <br>
+        </br>
+        <br>
+        </br>
+     </form>
+    </body>
+    </html>

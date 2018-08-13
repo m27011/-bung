@@ -18,22 +18,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type = "text/javascript">
     $(document).ready(function(){
-      var table =$("<table>").addClass("table table-striped table-bordered table-hover");
-      var tbody = $("<tbody>");
+      var table       = $("<table>").addClass("table table-striped table-bordered table-hover");
+      var thead       = $("<thead>");
+      var tbody       = $("<tbody>");
+      var th_vname    = $("<th>").text("Vorname");
+      var th_nname    = $("<th>").text("Nachname");
+      var th_gebdate  = $("<th>").text("Geburtsdatum");
+      var th_ort      = $("<th>").text("Wohnort");
+      var th_strasse  = $("<th>").text("Strasse");
+      var th_hsnr     = $("<th>").text("Hausnummer");
+      var th_plz      = $("<th>").text("Postleitzahl");
+      var th_gebort   = $("<th>").text("Geburtsort");
+      var trHeader    = $("<tr>");
+      
+      thead.append(trHeader.append(th_vname, th_nname, th_gebdate, th_ort, th_strasse, th_hsnr, th_plz, th_gebort));
       //https://getbootstrap.com/docs/4.1/content/tables/
-      $("body").append(table.append(tbody));
+      $("body").append(table.append(thead, tbody));
       
       $("#eingeben").click(function(){
         var tr = $("<tr>");
         
-        var vname = $("#vname").val();
-        var nname = $("#nname").val();
+        var vname   = $("#vname").val();
+        var nname   = $("#nname").val();
         var gebdate = $("#gebdate").val();
-        var ort = $("#ort").val();
+        var ort     = $("#ort").val();
         var strasse = $("#strasse").val();
-        var hsnr = $("#hsnr").val()
-        var plz = $("#plz").val();
-        var gebort = $("#gebort").val();
+        var hsnr    = $("#hsnr").val()
+        var plz     = $("#plz").val();
+        var gebort  = $("#gebort").val();
         var allesOK = true;
         
         if(vname==""){
@@ -77,14 +89,14 @@
         }
         
         if (allesOK){
-          var td_vname = $("<td>").text(vname);
-          var td_nname = $("<td>").text(nname);
-          var td_gebdate = $("<td>").text(gebdate);
-          var td_ort =$("<td>").text(ort);
-          var td_strasse =$("<td>").text(strasse);
-          var td_hsnr =$("<td>").text(hsnr);
-          var td_plz =$("<td>").text(plz);
-          var td_gebort =$("<td>").text(gebort);
+          var td_vname    = $("<td>").text(vname);
+          var td_nname    = $("<td>").text(nname);
+          var td_gebdate  = $("<td>").text(gebdate);
+          var td_ort      = $("<td>").text(ort);
+          var td_strasse  = $("<td>").text(strasse);
+          var td_hsnr     = $("<td>").text(hsnr);
+          var td_plz      = $("<td>").text(plz);
+          var td_gebort   = $("<td>").text(gebort);
           tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz,td_gebort);
           tbody.append(tr);
         }

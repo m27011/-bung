@@ -29,9 +29,13 @@
       var th_hsnr     = $("<th>").text("Hausnummer");
       var th_plz      = $("<th>").text("Postleitzahl");
       var th_gebort   = $("<th>").text("Geburtsort");
+      var th_inemail  = $("<th>").text("Email");
+      var th_password = $("<th>").text("Passwort");
+      var th_bname    = $("<th>").text("Benutzername");
+      var th_state    = $("<th>").text("Land");
       var trHeader    = $("<tr>");
       
-      thead.append(trHeader.append(th_vname, th_nname, th_gebdate, th_ort, th_strasse, th_hsnr, th_plz, th_gebort));
+      thead.append(trHeader.append(th_vname, th_nname, th_gebdate, th_ort, th_strasse, th_hsnr, th_plz, th_gebort, th_inemail, th_password, th_bname, th_state));
       //https://getbootstrap.com/docs/4.1/content/tables/
       $("body").append(table.append(thead, tbody));
       
@@ -46,6 +50,10 @@
         var hsnr    = $("#hsnr").val()
         var plz     = $("#plz").val();
         var gebort  = $("#gebort").val();
+        var inemail = $("#inemail").val();
+        var password =$("#password").val();
+        var state   =$("#state").val();
+        var bname   =$("#bname").val();
         var allesOK = true;
         
         if(vname==""){
@@ -88,6 +96,26 @@
           allesOK = false;
         }
         
+        if (inemail=="" && allesOK){
+          alert("Emailaddresse eingeben!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+       
+        if (state=="" && allesOK){
+          alert("State auswaehlen!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (password=="" && allesOK){
+          alert("Passwort eingeben!!!!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (bname=="" && allesOK){
+          alert("Benutzername eingeben!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
         if (allesOK){
           var td_vname    = $("<td>").text(vname);
           var td_nname    = $("<td>").text(nname);
@@ -97,7 +125,11 @@
           var td_hsnr     = $("<td>").text(hsnr);
           var td_plz      = $("<td>").text(plz);
           var td_gebort   = $("<td>").text(gebort);
-          tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz,td_gebort);
+          var td_inemail  = $("<td>").text(inemail);
+          var td_password = $("<td>").text(password);
+          var td_bname    = $("<td>").text(bname);
+          var td_state    = $("<td>").text(state);
+          tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz, td_gebort, td_inemail, td_password, td_bname, td_state);
           tbody.append(tr);
         }
       });
@@ -107,6 +139,21 @@
     <body>
       <h1> Test </h1>
       <form>
+        <fieldset class="form-group">
+          <div class ="row">
+            <legend class="col-form-label col-md-6 pt-0">Geschlecht</legend>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridradio" id="gridradio1" value="option1" checked>
+                <label class="form-check-label" for="gridradio1">Maennlich</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridradio" id="gridradio2" value="option2" checked>
+                <label clas="form-check-input" for="gridradio2">Weiblich</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
         <div class ="form-row">
           <div class ="form-group col-md-6">
         <label for ="vname" class="col-form-label">Vorname</label>
@@ -132,7 +179,7 @@
         <label for ="hsnr" class="col-form-label">Hausnummer</label>
         <input type ="number" class="form-control" id ="hsnr" hausnummer="hsnr" placeholder="z.B.: 12">
         </div>
-        <div class ="form-group col-md-6">
+         <div class ="form-group col-md-6">
         <label for ="plz" class="col-form-label">Postleitzahl</label>
         <input type ="number" class="form-control" id ="plz" postleitzahl="plz" placeholder="z.B.: 21029">
         </div>
@@ -140,6 +187,95 @@
         <label for ="gebort" class="col-form-label">Geburtsort</label>
         <input type= "text" class="form-control" id ="gebort" geburtsort ="gebort" placeholder="z.B.: Muenchen">
         </div>
+        <div class ="form-group col-md-6">
+          <label for ="inemail">Email</label>
+          <input type ="email" class="form-control" id = "inemail"  email ="inemail" placeholder ="z.B.: max_mustermann@hgdjfh.de">
+        </div>
+        <div class ="form-group col-md-6">
+          <label for ="password">Passwort</label>
+          <input type ="password" class="form-control" id="password" passwort ="password" placeholder="z.B.:lkfhdf5454fe4edf8df4">
+        </div>
+        <div class ="form-group col-md-6">
+          <label for ="bname">Benutzername</label>
+          <input type ="bname" class="form-control" id="bname" benutzername="bname" placeholder="z.B: kingkong">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="state">Land</label>
+          <select id="State" class="form-control" land ="state" >
+            <option>Choose</option>
+            <optgroup label="A">
+              <option>Albanien</option>
+            </optgroup>
+            <optgroup label="B">
+            <option>Belgien</option>  
+            </optgroup>
+            <optgroup label="C">
+              <option>China</option>
+            </optgroup>
+            <optgroup label="D">
+              <option>Deutschland</option>
+            </optgroup>
+            <optgroup label="E">
+              <option>Estland</option>
+            </optgroup>
+            <optgroup label="F">
+            <option>Finnland</option>
+            </optgroup>
+            <optgroup label ="G">
+              <option>Griechenland</option>
+            </optgroup>
+            <optgroup label="H">
+              <option>Haiti</option>
+            </optgroup>
+            <optgroup label="I">
+              <option>Island</option>
+            </optgroup>
+            <optgroup label="J">
+              <option>Japan</option>
+            </optgroup>
+            <optgroup label="K">
+              <option>Kolumbien</option>
+            </optgroup>
+            <optgroup label="L">
+              <option>Luxemburg</option>
+            </optgroup>
+            <optgroup label="M">
+              <option>Mexico</option>
+            </optgroup>
+            <optgroup label="N">
+              <option>Norwegen</option>
+            </optgroup>
+            <optgroup label="O">
+              <option>Oesterreich</option>
+            </optgroup>
+            <optgroup label="P">
+              <option>Portugal</option>
+            </optgroup>
+            <optgroup label="R">
+              <option>Russland</option>
+            </optgroup>
+            <optgroup label="S">
+            <option>Spanien</option>
+            </optgroup>
+            <optgroup label="T">
+              <option>Thailand</option>
+            </optgroup>
+            <optgroup label="U">
+              <option>USA</option>
+            </optgroup>
+            <optgroup label="V">
+              <option>Vereinigte arabische Emirate</option>
+            </optgroup>
+            <optgroup label="W">
+              <option>Weissrussland</option>
+            </optgroup>
+            <optgroup label="Z">
+              <option>Zypern</option>
+              <option>Zentralafrikanisch Republik</option>
+            </optgroup>
+            </select>
+        </div>
+        <br>
         <br>
         </br>
         <div class ="form-group col-md-6">

@@ -33,9 +33,11 @@
       var th_password = $("<th>").text("Passwort");
       var th_bname    = $("<th>").text("Benutzername");
       var th_state    = $("<th>").text("Land");
+      var th_geschlecht =$("<th>").text("Geschlecht");
+      var th_datei    =$("<th>").text("Datei");
       var trHeader    = $("<tr>");
       
-      thead.append(trHeader.append(th_vname, th_nname, th_gebdate, th_ort, th_strasse, th_hsnr, th_plz, th_gebort, th_inemail, th_password, th_bname, th_state));
+      thead.append(trHeader.append(th_vname, th_nname, th_gebdate, th_ort, th_strasse, th_hsnr, th_plz, th_gebort, th_inemail, th_password, th_bname, th_state, th_geschlecht, th_datei));
       //https://getbootstrap.com/docs/4.1/content/tables/
       $("body").append(table.append(thead, tbody));
       
@@ -54,6 +56,8 @@
         var password =$("#password").val();
         var state   =$("#state").val();
         var bname   =$("#bname").val();
+        var geschlecht = $("input[name='gridradio']:checked").val();
+        var exampleFormControlFile1 =$("#exampleFormControlFile1").val();
         var allesOK = true;
         
         if(vname==""){
@@ -116,6 +120,16 @@
           allesOK = false;
         }
         
+        if (state=="" && allesOK){
+          alert("Land auswaehlen!!!!!!!!!!!!!!!!!");
+          allesOK = false;
+        }
+        
+        if (exampleFormControlFile1=="" && allesOK){
+           alert("Datei hinzufuegen!!!!!!!!!!!!!");
+           allesOK = false;
+        }
+        
         if (allesOK){
           var td_vname    = $("<td>").text(vname);
           var td_nname    = $("<td>").text(nname);
@@ -129,7 +143,9 @@
           var td_password = $("<td>").text(password);
           var td_bname    = $("<td>").text(bname);
           var td_state    = $("<td>").text(state);
-          tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz, td_gebort, td_inemail, td_password, td_bname, td_state);
+          var td_geschlecht = $("<td>").text(geschlecht);
+          var td_exampleFormControlFile1=$("<td>").text(exampleFormControlFile1)
+          tr.append(td_vname, td_nname, td_gebdate, td_ort, td_strasse, td_hsnr, td_plz, td_gebort, td_inemail, td_password, td_bname, td_state, td_geschlecht, td_exampleFormControlFile1);
           tbody.append(tr);
         }
       });
@@ -144,11 +160,11 @@
             <legend class="col-form-label col-md-6 pt-0">Geschlecht</legend>
             <div class="col-md-6">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridradio" id="gridradio1" value="option1" checked>
+                <input class="form-check-input" type="radio" name="gridradio" id="gridradio1" value="maennlich" checked>
                 <label class="form-check-label" for="gridradio1">Maennlich</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridradio" id="gridradio2" value="option2" checked>
+                <input class="form-check-input" type="radio" name="gridradio" id="gridradio2" value="weiblich" checked>
                 <label clas="form-check-input" for="gridradio2">Weiblich</label>
               </div>
             </div>
@@ -201,72 +217,302 @@
         </div>
         <div class="form-group col-md-6">
           <label for="state">Land</label>
-          <select id="State" class="form-control" land ="state" >
+          <select id="state" class="form-control" land ="state" >
             <option>Choose</option>
             <optgroup label="A">
+              <option>Afghanistan</option>
+              <option>Aegypten</option>
+              <option>Aland</option>
               <option>Albanien</option>
+              <option>Algerien</option>
+              <option>Amerikanische Jungferninseln</option>
+              <option>Amerikanisch-Samoa</option>
+              <option>Andorra</option>
+              <option>Angola</option>
+              <option>Anguilla</option>
+              <option>Antraktika</option>
+              <option>Antigua und Barbuda</option>
+              <option>Aequarorialguiena</option>
+              <option>Argentinien</option>
+              <option>Armenien</option>
+              <option>Aruba</option>
+              <option>Aserbaidschan</option>
+              <option>Aethopien</option>
+              <option>Australien</option>
             </optgroup>
             <optgroup label="B">
-            <option>Belgien</option>  
+              <option>Bahamas</option>
+              <option>Bahrain</option>
+              <option>Bangladesch</option>
+              <option>Barbados</option>
+              <option>Bassas da India</option>
+              <option>Belarus</option>
+              <option>Belgien</option>
+              <option>Belize</option>
+              <option>Benin</option>
+              <option>Bermuda</option>
+              <option>Bhutan</option>
+              <option>Bolivien</option>
+              <option>Bosnien und Herzegowina</option>
+              <option>Botsuana</option>
+              <option>Bouvetinsel</option>
+              <option>Brasilien</option>
+              <option>Britische Jungferninseln</option>
+              <option>Britisches Territorium im Indischen Ozean</option>
+              <option>Burnei Darussalam</option>
+              <option>Bulgarien</option>
+              <option>Burkina Faso</option>
+              <option>Burundi</option>
             </optgroup>
             <optgroup label="C">
+              <option>Cabo Verde</option>
+              <option>Chile</option>
               <option>China</option>
+              <option>Clipperton</option>
+              <option>Cookinseln</option>
+              <option>Costa Rica</option>
+              <option>Cote dIvoire</option>
             </optgroup>
             <optgroup label="D">
+              <option>Daenemark</option>
               <option>Deutschland</option>
+              <option>Dominica</option>
+              <option>Dominikanische Republik</option>
+              <option>Dschibuti</option>
             </optgroup>
             <optgroup label="E">
+              <option>Ecuador</option>
+              <option>El Salvador</option>
+              <option>Eritrea</option>
               <option>Estland</option>
+              <option>Europa</option>
             </optgroup>
             <optgroup label="F">
-            <option>Finnland</option>
+              <option>Falklandinseln</option>
+              <option>Faeroeer</option>
+              <option>Fidschi</option>
+              <option>Finnland</option>
+              <option>Frankreich</option>
+              <option>Franzoesiche Sued- und Antarktisgebiete</option>
+              <option>Franzoesisch-Guayana</option>
+              <option>Franzoesisch-Polynesien</option>
             </optgroup>
             <optgroup label ="G">
+              <option>Gabun</option>
+              <option>Gambia</option>
+              <option>Gazastreifen</option>
+              <option>Georgien</option>
+              <option>Ghana</option>
+              <option>Gibraltar</option>
+              <option>Glorieuses</option>
+              <option>Grenada</option>
               <option>Griechenland</option>
+              <option>Groenland</option>
+              <option>Grossbritannien</option>
+              <option>Guadeloup</option>
+              <option>Guam</option>
+              <option>Guatemala</option>
+              <option>Guernsey</option>
+              <option>Guinea</option>
+              <option>Guinea-Bissau</option>
+              <option>Guyana</option>
             </optgroup>
             <optgroup label="H">
               <option>Haiti</option>
+              <option>Heard und McDonaldinseln</option>
+              <option>Honduras</option>
+              <option>HongKong</option>
             </optgroup>
             <optgroup label="I">
+              <option>Indien</option>
+              <option>Indonesien</option>
+              <option>Insel Man</option>
+              <option>Irak</option>
+              <option>Iran</option>
+              <option>Irland</option>
               <option>Island</option>
+              <option>Israel</option>
+              <option>Italien</option>
             </optgroup>
             <optgroup label="J">
+              <option>Jamaika</option>
               <option>Japan</option>
+              <option>Jemen</option>
+              <option>Jersey</option>
+              <option>Jordanien</option>
+              <option>Juan de Nova</option>
             </optgroup>
             <optgroup label="K">
+              <option>Kaimaninseln</option>
+              <option>Kambodscha</option>
+              <option>Kamerun</option>
+              <option>Kanada</option>
+              <option>Kasachstan</option>
+              <option>Katar</option>
+              <option>Kenia</option>
+              <option>Kirgisistan</option>
+              <option>Kiribati</option>
+              <option>Kokosinseln</option>
               <option>Kolumbien</option>
+              <option>Komoren</option>
+              <option>Kongo</option>
+              <option>Kongo, Demokratische Republik</option>
+              <option>Korea, Demokratische Volksrepublik</option>
+              <option>Korea, Republik</option>
+              <option>Kroatien</option>
+              <option>Kuba</option>
+              <option>Kuwait</option>
             </optgroup>
             <optgroup label="L">
+              <option>Laos</option>
+              <option>Lesotho</option>
+              <option>Lettland</option>
+              <option>Libanon</option>
+              <option>Liberia</option>
+              <option>Libyen</option>
+              <option>Lichtenstein</option>
+              <option>Litauen</option>
               <option>Luxemburg</option>
             </optgroup>
             <optgroup label="M">
+              <option>Macau</option>
+              <option>Madagaskar</option>
+              <option>Malawi</option>
+              <option>Malaysia</option>
+              <option>Malediven</option>
+              <option>Mail</option>
+              <option>Malta</option>
+              <option>Marokko</option>
+              <option>Marshallinseln</option>
+              <option>Martinique</option>
+              <option>Mauretanien</option>
+              <option>Mauritius</option>
+              <option>Mayotte</option>
+              <option>Mazedonien</option>
               <option>Mexico</option>
+              <option>Mikronesien</option>
+              <option>Moldau</option>
+              <option>Monaco</option>
+              <option>Mongolei</option>
+              <option>Montenegro</option>
+              <option>Montserrat</option>
+              <option>Mosambik</option>
+              <option>Myanmar</option>
             </optgroup>
             <optgroup label="N">
+              <option>Namibia</option>
+              <option>Nauru</option>
+              <option>Nepal</option>
+              <option>Neukaledonien</option>
+              <option>Neuseeland</option>
+              <option>Nicaragua</option>
+              <option>Niederlande</option>
+              <option>Niederlaendischen Antillen</option>
+              <option>Niger</option>
+              <option>Nigeria</option>
+              <option>Niue</option>
+              <option>Noerdliche Marianen</option>
+              <option>Norfolkinseln</option>
               <option>Norwegen</option>
             </optgroup>
             <optgroup label="O">
+              <option>Oman</option>
               <option>Oesterreich</option>
             </optgroup>
             <optgroup label="P">
+              <option>Pakistan</option>
+              <option>Palau</option>
+              <option>Panama</option>
+              <option>Papua-Neuguinea</option>
+              <option>Paraguay</option>
+              <option>Peru</option>
+              <option>Philippinen</option>
+              <option>Pitcairninseln</option>
+              <option>Polen</option>
               <option>Portugal</option>
+              <option>Puerto Rico</option>
             </optgroup>
             <optgroup label="R">
+              <option>Reunion</option>
+              <option>Ruanda</option>
+              <option>Rumaenien</option>
               <option>Russland</option>
             </optgroup>
             <optgroup label="S">
-            <option>Spanien</option>
+              <option>Saint-Martin</option>
+              <option>Salamonen</option>
+              <option>Sambia</option>
+              <option>Samoa</option>
+              <option>San Marino</option>
+              <option>Sao Tome und Principe</option>
+              <option>Saudi-Arabien</option>
+              <option>Schweden</option>
+              <option>Schweiz</option>
+              <option>Senegal</option>
+              <option>Serbien</option>
+              <option>Seychellen</option>
+              <option>Sierra Leone</option>
+              <option>Sinbabwe</option>
+              <option>Singapur</option>
+              <option>Slowakei</option>
+              <option>Slowenien</option>
+              <option>Somalia</option>
+              <option>Spanien</option>
+              <option>Spitzbergen</option>
+              <option>Sri Lanka</option>
+              <option>St. Barthelemy</option>
+              <option>St. Helena, Ascension Tristan da Cunha</option>
+              <option>St. Kitts und Nevis</option>
+              <option>St. Lucia</option>
+              <option>St. Pierre und Miguelon</option>
+              <option>St. Vincent und die Grenadien</option>
+              <option>Suedafrika</option>
+              <option>Sudan</option>
+              <option>Suedgeorgien und die Suedlichen Sandwichinseln</option>
+              <option>Suedsudan</option>
+              <option>Suriname</option>
+              <option>Swasiland</option>
+              <option>Syrien</option>
             </optgroup>
             <optgroup label="T">
+              <option>Tadschikistan</option>
+              <option>Taiwan</option>
+              <option>Tansania</option>
               <option>Thailand</option>
+              <option>Timor-Leste</option>
+              <option>Togo</option>
+              <option>Tokelau</option>
+              <option>Tonga</option>
+              <option>Trinidad und Tobago</option>
+              <option>Tromelin</option>
+              <option>Tschad</option>
+              <option>Tschechische Republik</option>
+              <option>Tunesien</option>
+              <option>Tuerkei</option>
+              <option>Turkmenistan</option>
+              <option>Turks- und Caicosinseln</option>
+              <option>tuvalu</option>
             </optgroup>
             <optgroup label="U">
-              <option>USA</option>
+              <option>Uganda</option>
+              <option>Ukraine</option>
+              <option>Ungarn</option>
+              <option>Uruguay</option>
+              <option>Usbekistan</option>
             </optgroup>
             <optgroup label="V">
+              <option>Vanuatu</option>
+              <option>Vatikanstadt</option>
+              <option>Venezuela</option>
               <option>Vereinigte arabische Emirate</option>
+              <option>Vereinigte Staaten</option>
+              <option>Vietnam</option>
             </optgroup>
             <optgroup label="W">
+              <option>Wallis und Futuna</option>
+              <option>Weihnachtsinseln</option>
+              <option>Westjordanland</option>
+              <option>Westsahara</option>
               <option>Weissrussland</option>
             </optgroup>
             <optgroup label="Z">
@@ -275,9 +521,14 @@
             </optgroup>
             </select>
         </div>
-        <br>
+        <div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Datei auswaehlen</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
         <br>
         </br>
+        <div>
         <div class ="form-group col-md-6">
         <button type = "button" class="btn btn-primary" id="eingeben">Daten Eingeben</button>
         </div>
